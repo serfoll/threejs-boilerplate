@@ -33,6 +33,11 @@ button {
   outline: none;
 }
 
+canvas {
+  // pointer-events: none;
+  position: relative;
+}
+
 img {
   vertical-align: middle;
   width: 100%;

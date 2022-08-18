@@ -7,9 +7,12 @@ html(lang='en')
 
     base(href='/')
 
-    title= 'Threejs Boilerplate'
+    title= 'Threejs - Boilerplate'
 
-    meta(name='description', content='Threejs pug view engine boilerplate with parcel code bundler')
+    meta(
+      name='description',
+      content='Threejs pug view engine boilerplate with parcel code bundler'
+    )
 
     link(rel='stylesheet', href='styles/index.scss')
 
@@ -17,3 +20,4 @@ html(lang='en')
   body 
     #container
 
+    include views/partials/footer
