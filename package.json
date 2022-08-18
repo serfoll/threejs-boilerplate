@@ -1,0 +1,24 @@
+{
+  "name": "thrreejs-boilerplate",
+  "version": "0.0.1",
+  "description": "threejs pug boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serfoll/threejs-boilerplate.git"
+  },
+  "keywords": [
+    "threejs",
+    "parcel",
+    "pug"
+  ],
+  "author": "SerFoll",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serfoll/threejs-boilerplate/issues"
+  },
+  "homepage": "https://github.com/serfoll/threejs-boilerplate#readme"
+}
