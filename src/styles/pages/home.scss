@@ -1,0 +1,155 @@
+#content {
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+
+  @include media('>=desktop') {
+    margin: auto;
+    width: 144rem;
+  }
+
+  @include media('>1800px') {
+    overflow: visible;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    height: 50.3rem;
+    position: absolute;
+    width: 18rem;
+    z-index: -1;
+
+    @include media('>phone') {
+      height: 70rem;
+      width: 50rem;
+    }
+  }
+
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      $gradient-after-light 0%,
+      $gradient-after-dark 100%
+    );
+    border-radius: 0 0 50rem 0;
+    top: 0;
+    width: 18.8rem;
+
+    @include media('>phone') {
+      border-radius: 0 0 50rem 50rem;
+      left: -8rem;
+      width: 50rem;
+    }
+
+    @include media('>=1800px') {
+      left: 0;
+    }
+  }
+
+  &::before {
+    background: rgba($color-Pale-Violet, 0.08);
+    border-radius: 50rem 0 0 0;
+    bottom: -23rem;
+    right: 0;
+
+    @include media('>phone') {
+      border-radius: 50rem 50rem 0 0;
+      bottom: 0;
+      height: 80rem;
+      right: -18rem;
+      width: 50rem;
+    }
+
+    @include media('>=1800px') {
+      right: 0;
+    }
+  }
+}
+
+.content__wrapper {
+  margin: auto;
+  overflow-x: hidden;
+  @include media('>phone') {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50vh;
+  }
+  @include media('>=desktop') {
+    display: flex;
+    top: 0;
+    transform: translateY(0);
+    width: auto;
+  }
+}
+
+.description__wrapper {
+  padding: 0 3rem;
+  position: relative;
+
+  @include media('>=desktop') {
+    align-self: center;
+    padding: 0 12rem;
+    top: 9rem;
+  }
+}
+
+.description__title {
+  color: $color-Very-Dark-Desaturated-Violet;
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+
+  @include media('>=desktop') {
+    margin-top: -9rem;
+    font-size: 4.1rem;
+    font-weight: 500;
+    text-align: left;
+  }
+}
+
+.description__text {
+  line-height: 1.8;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+
+  @include media('>phone', '<desktop') {
+    padding: 1rem 6rem;
+  }
+
+  @include media('>=desktop') {
+    text-align: left;
+    padding-left: 0;
+    padding-right: 13rem;
+  }
+}
+
+.footer {
+  display: none;
+  bottom: -20rem;
+  left: 50%;
+  padding: 0 3rem;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.attribution {
+  a {
+    color: $color-Pale-Violet;
+
+    &:active {
+      color: $color-Dark-Desaturated-Violet;
+    }
+
+    @include media('>phone') {
+      &:hover,
+      &:active {
+        color: $color-Dark-Desaturated-Violet;
+      }
+    }
+  }
+}

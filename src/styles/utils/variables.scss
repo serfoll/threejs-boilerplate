@@ -1,0 +1,22 @@
+$color-black: hsl(0, 0%, 0%);
+$color-white: hsl(0, 0%, 100%);
+
+$gradient-Light: hsl(293, 100%, 63%);
+$gradient-Dark: hsl(264, 100%, 61%);
+
+$gradient-after-light: #c140ff;
+$gradient-after-dark: #953bff;
+
+$font-rubik: 'Rubik', sans-serif;
+
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+$z-indexes: (
+  'noscript',
+  'preloader',
+  'cursor',
+  'navigation',
+  'content',
+  'cases',
+  'canvas'
+);
