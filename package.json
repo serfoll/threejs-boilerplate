@@ -2,9 +2,10 @@
   "name": "thrreejs-boilerplate",
   "version": "0.0.1",
   "description": "threejs pug boilerplate",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel --no-cache src/index.pug src/styles/index.scss --port 3005 --open",
+    "deploy:src": "parcel build src/index.pug"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,30 @@
   "bugs": {
     "url": "https://github.com/serfoll/threejs-boilerplate/issues"
   },
-  "homepage": "https://github.com/serfoll/threejs-boilerplate#readme"
+  "homepage": "https://github.com/serfoll/threejs-boilerplate#readme",
+  "devDependencies": {
+    "@parcel/transformer-glsl": "^2.7.0",
+    "@parcel/transformer-pug": "^2.6.0",
+    "@parcel/transformer-sass": "^2.6.0",
+    "@prettier/plugin-pug": "^2.1.0",
+    "@swc/helpers": "^0.3.17",
+    "eslint": "^8.16.0",
+    "eslint-config": "^0.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "gsap": "^3.10.4",
+    "include-media": "^1.4.10",
+    "parcel": "^2.7.0",
+    "parcel-resolver-project-root": "^2.1.1",
+    "prettier": "^2.3.1",
+    "sharp": "^0.29.3"
+  },
+  "dependencies": {
+    "fontfaceobserver": "^2.3.0",
+    "imagesloaded": "^5.0.0",
+    "pug": "^3.0.2",
+    "three": "^0.143.0"
+  }
 }

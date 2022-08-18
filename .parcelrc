@@ -1,7 +1,7 @@
 {
   "extends": "@parcel/config-default",
   "resolvers": [
-    "parcel-resolver-project-root",
-    "..."
+    "...",
+    "parcel-resolver-project-root"
   ]
 }

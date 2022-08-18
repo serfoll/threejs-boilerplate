@@ -3,7 +3,7 @@
   "extends": [
     "eslint:recommended",
     "prettier",
-    "./node_modules/@prettier/plugin-pug"
+    "node_modules/@prettier/plugin-pug"
   ],
   "plugins": ["prettier"],
   "globals": {
