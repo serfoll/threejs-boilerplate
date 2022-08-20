@@ -69,7 +69,8 @@ export default class Sketch {
         uProgress: { value: 0 },
         uQuadSize: { value: new THREE.Vector2(300, 300) },
         uResolution: { value: new THREE.Vector2(this.width, this.height) },
-        uTexture: { value: new THREE.TextureLoader().load(testTexture) }
+        uTexture: { value: new THREE.TextureLoader().load(testTexture) },
+        uTextureSize: { value: new THREE.Vector2(100, 100) }
       },
       vertexShader: vertexShader
       // wireframe: true
@@ -77,7 +78,7 @@ export default class Sketch {
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     this.mesh.position.x = 300
-    this.mesh.rotation.z = 5
+    this.mesh.rotation.z = -5
     this.scene.add(this.mesh)
   }
 
