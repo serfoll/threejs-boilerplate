@@ -4,6 +4,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import fragmentShader from './shaders/fragment.glsl'
 import vertexShader from './shaders/vertex.glsl'
 
+// texture/images
+import testTexture from '../shared/img/texture.jpg'
+
+console.log(testTexture)
 export default class Sketch {
   constructor(options) {
     this.container = options.domElement
@@ -39,19 +43,21 @@ export default class Sketch {
     // this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2)
     // this.material = new THREE.MeshNormalMaterial()
     // this.geometry = new THREE.SphereBufferGeometry(0.2, 3, 3)
-    this.geometry = new THREE.PlaneBufferGeometry(0.5, 0.5)
+    this.geometry = new THREE.PlaneBufferGeometry(0.5, 0.5, 50, 50)
 
     // this.material = new THREE.MeshBasicMaterial({
     //   color: 0xf000ff
     // })
 
     this.material = new THREE.ShaderMaterial({
-      uniforms: {
-        time: { value: 0 },
-        resolution: { value: new THREE.Vector2() }
-      },
       fragmentShader: fragmentShader,
+      uniforms: {
+        resolution: { value: new THREE.Vector2() },
+        time: { value: 0 },
+        uTexture: { value: new THREE.TextureLoader().load(testTexture) }
+      },
       vertexShader: vertexShader
+      // wireframe: true
     })
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
@@ -60,10 +66,9 @@ export default class Sketch {
   }
 
   render() {
-    this.time += 0.001
+    this.time += 0.05
 
-    // this.mesh.rotation.x = this.time
-    // this.mesh.rotation.y = this.time
+    this.material.uniforms.time.value = this.time
 
     this.renderer.render(this.scene, this.camera)
 
