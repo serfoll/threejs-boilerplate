@@ -42,6 +42,7 @@
     "sharp": "^0.29.3"
   },
   "dependencies": {
+    "dat.gui": "^0.7.9",
     "fontfaceobserver": "^2.3.0",
     "imagesloaded": "^5.0.0",
     "pug": "^3.0.2",

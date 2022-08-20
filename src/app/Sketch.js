@@ -1,5 +1,6 @@
-import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import * as THREE from 'three'
+import * as dat from 'dat.gui'
 
 import fragmentShader from './shaders/fragment.glsl'
 import vertexShader from './shaders/vertex.glsl'
@@ -32,7 +33,7 @@ export default class Sketch {
     this.controlls = new OrbitControls(this.camera, this.renderer.domElement)
 
     this.time = 0
-
+    this.setupSettings()
     this.resize()
     this.addObject()
     this.render()
@@ -40,11 +41,21 @@ export default class Sketch {
     this.onResize()
   }
 
+  setupSettings() {
+    this.settings = {
+      progress: 0
+    }
+
+    this.gui = new dat.GUI()
+    //progress min = 0 max = 1, progress step = 0.001
+    this.gui.add(this.settings, 'progress', 0, 1, 0.001)
+  }
+
   addObject() {
     // this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2)
     // this.material = new THREE.MeshNormalMaterial()
     this.geometry = new THREE.SphereBufferGeometry(0.3, 130, 130)
-    this.geometry = new THREE.PlaneBufferGeometry(350, 350, 100, 100)
+    this.geometry = new THREE.PlaneBufferGeometry(300, 300, 100, 100)
 
     // this.material = new THREE.MeshBasicMaterial({
     //   color: 0xf000ff
@@ -55,6 +66,9 @@ export default class Sketch {
       uniforms: {
         resolution: { value: new THREE.Vector2() },
         time: { value: 0 },
+        uProgress: { value: 0 },
+        uQuadSize: { value: new THREE.Vector2(300, 300) },
+        uResolution: { value: new THREE.Vector2(this.width, this.height) },
         uTexture: { value: new THREE.TextureLoader().load(testTexture) }
       },
       vertexShader: vertexShader
@@ -62,7 +76,8 @@ export default class Sketch {
     })
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
-
+    this.mesh.position.x = 300
+    this.mesh.rotation.z = 5
     this.scene.add(this.mesh)
   }
 
@@ -70,6 +85,8 @@ export default class Sketch {
     this.time += 0.05
 
     this.material.uniforms.time.value = this.time
+    //controlled progress
+    this.material.uniforms.uProgress.value = this.settings.progress
 
     this.renderer.render(this.scene, this.camera)
 
