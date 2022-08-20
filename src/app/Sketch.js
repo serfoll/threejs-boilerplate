@@ -15,12 +15,13 @@ export default class Sketch {
     this.width = this.container.offsetWidth
 
     this.camera = new THREE.PerspectiveCamera(
-      70,
+      80,
       this.width / this.height,
-      0.01,
-      10
+      10,
+      1000
     )
-    this.camera.position.z = 1
+    this.camera.position.z = 600
+    this.camera.fov = (2 * Math.atan(this.height / 2 / 600) * 180) / Math.PI
 
     this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     this.renderer.setPixelRatio(window.devicePixelRatio)
@@ -42,8 +43,8 @@ export default class Sketch {
   addObject() {
     // this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2)
     // this.material = new THREE.MeshNormalMaterial()
-    this.geometry = new THREE.PlaneBufferGeometry(0.5, 0.5, 50, 50)
     this.geometry = new THREE.SphereBufferGeometry(0.3, 130, 130)
+    this.geometry = new THREE.PlaneBufferGeometry(350, 350, 100, 100)
 
     // this.material = new THREE.MeshBasicMaterial({
     //   color: 0xf000ff
