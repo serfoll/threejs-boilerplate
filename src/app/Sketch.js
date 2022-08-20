@@ -1,7 +1,9 @@
+import * as dat from 'dat.gui'
+import GSAP from 'gsap'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import * as THREE from 'three'
-import * as dat from 'dat.gui'
 
+//Shaders
 import fragmentShader from './shaders/fragment.glsl'
 import vertexShader from './shaders/vertex.glsl'
 
@@ -66,6 +68,7 @@ export default class Sketch {
       uniforms: {
         resolution: { value: new THREE.Vector2() },
         time: { value: 0 },
+        uCorners: { value: new THREE.Vector4(0, 0, 0, 0) },
         uProgress: { value: 0 },
         uQuadSize: { value: new THREE.Vector2(300, 300) },
         uResolution: { value: new THREE.Vector2(this.width, this.height) },
@@ -76,9 +79,14 @@ export default class Sketch {
       // wireframe: true
     })
 
+    this.tl = GSAP.timeline()
+      .to(this.material.uniforms.uCorners.value, { duration: 1, x: 1 })
+      .to(this.material.uniforms.uCorners.value, { duration: 1, y: 1 }, 0.1)
+      .to(this.material.uniforms.uCorners.value, { duration: 1, z: 1 }, 0.35)
+      .to(this.material.uniforms.uCorners.value, { duration: 1, w: 1 }, 0.55)
+
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     this.mesh.position.x = 300
-    this.mesh.rotation.z = -5
     this.scene.add(this.mesh)
   }
 
@@ -87,7 +95,8 @@ export default class Sketch {
 
     this.material.uniforms.time.value = this.time
     //controlled progress
-    this.material.uniforms.uProgress.value = this.settings.progress
+    // this.material.uniforms.uProgress.value = this.settings.progress
+    this.tl.progress(this.settings.progress)
 
     this.renderer.render(this.scene, this.camera)
 
